@@ -162,7 +162,7 @@ class ColorPicker extends ReactCSS.Component {
     return (
       <div is="wrap">
         <div is="picker">
-          <Picker {...this.state} onChange={ this.handleChange } onAccept={ this.handleAccept } onCancel={ this.handleCancel } />
+          <Picker {...this.state} rgba={this.props.rgba} onChange={ this.handleChange } onAccept={ this.handleAccept } onCancel={ this.handleCancel } />
         </div>
         <div is="cover" onClick={ this.handleHide }/>
       </div>
@@ -179,6 +179,7 @@ ColorPicker.defaultProps = {
   },
   display: null,
   type: 'sketch',
+  rgba: 'show',
   position: 'right',
   positionCSS: {},
 };

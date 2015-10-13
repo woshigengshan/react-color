@@ -28,6 +28,12 @@ class ShetchFields extends ReactCSS.Component {
         double: {
           flex: '2',
         },
+        hexHolder: {
+          width: '100%'
+        },
+        only: {
+          flex: '1'
+        },
         Input: {
           style: {
             input: {
@@ -36,6 +42,7 @@ class ShetchFields extends ReactCSS.Component {
               border: 'none',
               boxShadow: 'inset 0 0 0 1px #ccc',
               fontSize: '11px',
+              textAlign: 'center'
             },
             label: {
               display: 'block',
@@ -47,7 +54,7 @@ class ShetchFields extends ReactCSS.Component {
               textTransform: 'capitalize',
             },
           },
-        },
+        }
       },
     };
   }
@@ -79,24 +86,42 @@ class ShetchFields extends ReactCSS.Component {
     }
   }
 
+  fields() {
+    if (this.props.rgba === 'show') {
+      return (
+        <div className="flexbox-fix">
+          <div is="double">
+            <EditableInput is="Input" label="hex" value={ this.props.hex.replace('#', '') } onChange={ this.handleChange }/>
+          </div>
+          <div is="single">
+            <EditableInput is="Input" label="r" value={ this.props.rgb.r } onChange={ this.handleChange } dragLabel="true" dragMax="255"/>
+          </div>
+          <div is="single">
+            <EditableInput is="Input" label="g" value={ this.props.rgb.g } onChange={ this.handleChange } dragLabel="true" dragMax="255"/>
+          </div>
+          <div is="single">
+            <EditableInput is="Input" label="b" value={ this.props.rgb.b } onChange={ this.handleChange } dragLabel="true" dragMax="255"/>
+          </div>
+          <div is="single">
+            <EditableInput is="Input" label="a" value={ Math.round(this.props.rgb.a * 100) } onChange={ this.handleChange } dragLabel="true" dragMax="100"/>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div is="hexHolder">
+          <div is="only">
+            <EditableInput is="Input" label="hex" value={ this.props.hex.replace('#', '') } onChange={ this.handleChange }/>
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
-      <div is="fields" className="flexbox-fix">
-        <div is="double">
-          <EditableInput is="Input" label="hex" value={ this.props.hex.replace('#', '') } onChange={ this.handleChange }/>
-        </div>
-        <div is="single">
-          <EditableInput is="Input" label="r" value={ this.props.rgb.r } onChange={ this.handleChange } dragLabel="true" dragMax="255"/>
-        </div>
-        <div is="single">
-          <EditableInput is="Input" label="g" value={ this.props.rgb.g } onChange={ this.handleChange } dragLabel="true" dragMax="255"/>
-        </div>
-        <div is="single">
-          <EditableInput is="Input" label="b" value={ this.props.rgb.b } onChange={ this.handleChange } dragLabel="true" dragMax="255"/>
-        </div>
-        <div is="single">
-          <EditableInput is="Input" label="a" value={ Math.round(this.props.rgb.a * 100) } onChange={ this.handleChange } dragLabel="true" dragMax="100"/>
-        </div>
+      <div is="fields">
+        {this.fields()}
       </div>
     );
   }

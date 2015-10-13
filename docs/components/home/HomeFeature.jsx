@@ -163,7 +163,7 @@ class HomeFeature extends ReactCSS.Component {
               <Move inDelay={ 400 } inStartTransform="translateY(10px)" inEndTransform="translateY(0)">
                 <Grid preset="two">
                   <div is="sketch">
-                    <ColorPicker type="sketch" color={ this.state } onChangeComplete={ this.handleChangeComplete } />
+                    <ColorPicker type="sketch" rgba="hide" color={ this.state } onChangeComplete={ this.handleChangeComplete } />
                     <div is="label">Sketch</div>
                   </div>
                   <div is="photoshop">

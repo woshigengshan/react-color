@@ -32639,7 +32639,7 @@
 	                  React.createElement(
 	                    'div',
 	                    { style: this.styles().sketch },
-	                    React.createElement(ColorPicker, { type: 'sketch', color: this.state, onChangeComplete: this.handleChangeComplete }),
+	                    React.createElement(ColorPicker, { type: 'sketch', rgba: 'hide', color: this.state, onChangeComplete: this.handleChangeComplete }),
 	                    React.createElement(
 	                      'div',
 	                      { style: this.styles().label },
@@ -32935,7 +32935,7 @@
 	        React.createElement(
 	          'div',
 	          { style: this.styles().picker },
-	          React.createElement(Picker, _extends({}, this.state, { onChange: this.handleChange, onAccept: this.handleAccept, onCancel: this.handleCancel }))
+	          React.createElement(Picker, _extends({}, this.state, { rgba: this.props.rgba, onChange: this.handleChange, onAccept: this.handleAccept, onCancel: this.handleCancel }))
 	        ),
 	        React.createElement('div', { style: this.styles().cover, onClick: this.handleHide })
 	      );
@@ -32954,6 +32954,7 @@
 	  },
 	  display: null,
 	  type: 'sketch',
+	  rgba: 'show',
 	  position: 'right',
 	  positionCSS: {}
 	};
@@ -34888,44 +34889,85 @@
 	  _createClass(Hue, [{
 	    key: 'classes',
 	    value: function classes() {
-	      return {
-	        'default': {
-	          hue: {
-	            Absolute: '0 0 0 0',
-	            background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
-	            borderRadius: this.props.radius,
-	            boxShadow: this.props.shadow
+	      if (this.props.rgba === 'show') {
+	        return {
+	          'default': {
+	            hue: {
+	              Absolute: '0 0 0 0',
+	              background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
+	              borderRadius: this.props.radius,
+	              boxShadow: this.props.shadow
+	            },
+	            container: {
+	              margin: '0 2px',
+	              position: 'relative',
+	              height: '100%'
+	            },
+	            pointer: {
+	              zIndex: '2',
+	              position: 'absolute',
+	              left: this.props.hsl.h * 100 / 360 + '%'
+	            },
+	            slider: {
+	              marginTop: '1px',
+	              width: '4px',
+	              borderRadius: '1px',
+	              height: '8px',
+	              boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
+	              background: '#fff',
+	              transform: 'translateX(-2px)'
+	            }
 	          },
-	          container: {
-	            margin: '0 2px',
-	            position: 'relative',
-	            height: '100%'
-	          },
-	          pointer: {
-	            zIndex: '2',
-	            position: 'absolute',
-	            left: this.props.hsl.h * 100 / 360 + '%'
-	          },
-	          slider: {
-	            marginTop: '1px',
-	            width: '4px',
-	            borderRadius: '1px',
-	            height: '8px',
-	            boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
-	            background: '#fff',
-	            transform: 'translateX(-2px)'
+	          'direction-vertical': {
+	            hue: {
+	              background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)'
+	            },
+	            pointer: {
+	              left: '0',
+	              top: -(this.props.hsl.h * 100 / 360) + 100 + '%'
+	            }
 	          }
-	        },
-	        'direction-vertical': {
-	          hue: {
-	            background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)'
+	        };
+	      } else {
+	        return {
+	          'default': {
+	            hue: {
+	              Absolute: '0 0 0 0',
+	              background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
+	              borderRadius: this.props.radius,
+	              boxShadow: this.props.shadow
+	            },
+	            container: {
+	              margin: '0 2px',
+	              position: 'relative',
+	              height: '16px'
+	            },
+	            pointer: {
+	              zIndex: '2',
+	              position: 'absolute',
+	              left: this.props.hsl.h * 100 / 360 + '%'
+	            },
+	            slider: {
+	              marginTop: '1px',
+	              width: '4px',
+	              borderRadius: '1px',
+	              height: '14px',
+	              boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
+	              background: '#fff',
+	              transform: 'translateX(-2px)'
+	            }
 	          },
-	          pointer: {
-	            left: '0',
-	            top: -(this.props.hsl.h * 100 / 360) + 100 + '%'
+	          'direction-vertical': {
+	            hue: {
+	              background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)'
+	            },
+	            pointer: {
+	              left: '0',
+	              top: -(this.props.hsl.h * 100 / 360) + 100 + '%'
+	            }
 	          }
-	        }
-	      };
+	        };
+	      }
 	    }
 	  }, {
 	    key: 'handleChange',
@@ -35531,70 +35573,133 @@
 	  _createClass(Sketch, [{
 	    key: 'classes',
 	    value: function classes() {
-	      return {
-	        'default': {
-	          picker: {
-	            width: '200px',
-	            padding: '10px 10px 0',
-	            boxSizing: 'initial',
-	            background: '#fff',
-	            borderRadius: '4px',
-	            boxShadow: '0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15)'
-	          },
-	          saturation: {
-	            width: '100%',
-	            paddingBottom: '75%',
-	            position: 'relative',
-	            overflow: 'hidden'
-	          },
-	          Saturation: {
-	            radius: '3px',
-	            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
-	          },
-	          controls: {
-	            display: 'flex'
-	          },
-	          sliders: {
-	            padding: '4px 0',
-	            flex: '1'
-	          },
-	          color: {
-	            width: '24px',
-	            height: '24px',
-	            position: 'relative',
-	            marginTop: '4px',
-	            marginLeft: '4px',
-	            borderRadius: '3px'
-	          },
-	          activeColor: {
-	            Absolute: '0 0 0 0',
-	            borderRadius: '2px',
-	            background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
-	            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
-	            zIndex: '2'
-	          },
-	          hue: {
-	            position: 'relative',
-	            height: '10px',
-	            overflow: 'hidden'
-	          },
-	          Hue: {
-	            radius: '2px',
-	            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
-	          },
+	      if (this.props.rgba === 'show') {
+	        return {
+	          'default': {
+	            picker: {
+	              width: '200px',
+	              padding: '10px 10px 0',
+	              boxSizing: 'initial',
+	              background: '#fff',
+	              borderRadius: '4px',
+	              boxShadow: '0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15)'
+	            },
+	            saturation: {
+	              width: '100%',
+	              paddingBottom: '75%',
+	              position: 'relative',
+	              overflow: 'hidden'
+	            },
+	            Saturation: {
+	              radius: '3px',
+	              shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
+	            },
+	            controls: {
+	              display: 'flex'
+	            },
+	            sliders: {
+	              padding: '4px 0',
+	              flex: '1'
+	            },
+	            color: {
+	              width: '24px',
+	              height: '24px',
+	              position: 'relative',
+	              marginTop: '4px',
+	              marginLeft: '4px',
+	              borderRadius: '3px'
+	            },
+	            activeColor: {
+	              Absolute: '0 0 0 0',
+	              borderRadius: '2px',
+	              background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
+	              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+	              zIndex: '2'
+	            },
+	            hue: {
+	              position: 'relative',
+	              height: '10px',
+	              overflow: 'hidden'
+	            },
+	            Hue: {
+	              radius: '2px',
+	              shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
+	            },
 
-	          alpha: {
-	            position: 'relative',
-	            height: '10px',
-	            marginTop: '4px',
-	            overflow: 'hidden'
-	          },
-	          Alpha: {
-	            radius: '2px',
-	            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
+	            alpha: {
+	              position: 'relative',
+	              height: '10px',
+	              marginTop: '4px',
+	              overflow: 'hidden'
+	            },
+	            Alpha: {
+	              radius: '2px',
+	              shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
+	            }
 	          }
-	        }
-	      };
+	        };
+	      } else {
+	        return {
+	          'default': {
+	            picker: {
+	              width: '200px',
+	              padding: '10px 10px 0',
+	              boxSizing: 'initial',
+	              background: '#fff',
+	              borderRadius: '4px',
+	              boxShadow: '0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15)'
+	            },
+	            saturation: {
+	              width: '100%',
+	              paddingBottom: '75%',
+	              position: 'relative',
+	              overflow: 'hidden'
+	            },
+	            Saturation: {
+	              radius: '3px',
+	              shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
+	            },
+	            controls: {
+	              display: 'flex'
+	            },
+	            sliders: {
+	              padding: '4px 0',
+	              flex: '1'
+	            },
+	            color: {
+	              width: '16px',
+	              height: '16px',
+	              position: 'relative',
+	              marginTop: '4px',
+	              marginLeft: '4px',
+	              borderRadius: '3px'
+	            },
+	            activeColor: {
+	              Absolute: '0 0 0 0',
+	              borderRadius: '2px',
+	              background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
+	              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+	              zIndex: '2'
+	            },
+	            hue: {
+	              position: 'relative',
+	              height: '16px',
+	              overflow: 'hidden'
+	            },
+	            Hue: {
+	              radius: '2px',
+	              shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
+	            },
+	            alpha: {
+	              display: 'none'
+	            },
+	            Alpha: {
+	              radius: '2px',
+	              shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
+	            }
+	          }
+	        };
+	      }
 	    }
 	  }, {
 	    key: 'handleChange',
@@ -35710,6 +35815,12 @@
 	          double: {
 	            flex: '2'
 	          },
+	          hexHolder: {
+	            width: '100%'
+	          },
+	          only: {
+	            flex: '1'
+	          },
 	          Input: {
 	            style: {
 	              input: {
@@ -35717,7 +35828,8 @@
 	                padding: '4px 10% 3px',
 	                border: 'none',
 	                boxShadow: 'inset 0 0 0 1px #ccc',
-	                fontSize: '11px'
+	                fontSize: '11px',
+	                textAlign: 'center'
 	              },
 	              label: {
 	                display: 'block',
@@ -35762,36 +35874,57 @@
 	      }
 	    }
 	  }, {
+	    key: 'fields',
+	    value: function fields() {
+	      if (this.props.rgba === 'show') {
+	        return React.createElement(
+	          'div',
+	          { className: 'flexbox-fix' },
+	          React.createElement(
+	            'div',
+	            { style: this.styles().double },
+	            React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'hex', value: this.props.hex.replace('#', ''), onChange: this.handleChange }))
+	          ),
+	          React.createElement(
+	            'div',
+	            { style: this.styles().single },
+	            React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'r', value: this.props.rgb.r, onChange: this.handleChange, dragLabel: 'true', dragMax: '255' }))
+	          ),
+	          React.createElement(
+	            'div',
+	            { style: this.styles().single },
+	            React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'g', value: this.props.rgb.g, onChange: this.handleChange, dragLabel: 'true', dragMax: '255' }))
+	          ),
+	          React.createElement(
+	            'div',
+	            { style: this.styles().single },
+	            React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'b', value: this.props.rgb.b, onChange: this.handleChange, dragLabel: 'true', dragMax: '255' }))
+	          ),
+	          React.createElement(
+	            'div',
+	            { style: this.styles().single },
+	            React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'a', value: Math.round(this.props.rgb.a * 100), onChange: this.handleChange, dragLabel: 'true', dragMax: '100' }))
+	          )
+	        );
+	      } else {
+	        return React.createElement(
+	          'div',
+	          { style: this.styles().hexHolder },
+	          React.createElement(
+	            'div',
+	            { style: this.styles().only },
+	            React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'hex', value: this.props.hex.replace('#', ''), onChange: this.handleChange }))
+	          )
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { style: this.styles().fields, className: 'flexbox-fix' },
-	        React.createElement(
-	          'div',
-	          { style: this.styles().double },
-	          React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'hex', value: this.props.hex.replace('#', ''), onChange: this.handleChange }))
-	        ),
-	        React.createElement(
-	          'div',
-	          { style: this.styles().single },
-	          React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'r', value: this.props.rgb.r, onChange: this.handleChange, dragLabel: 'true', dragMax: '255' }))
-	        ),
-	        React.createElement(
-	          'div',
-	          { style: this.styles().single },
-	          React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'g', value: this.props.rgb.g, onChange: this.handleChange, dragLabel: 'true', dragMax: '255' }))
-	        ),
-	        React.createElement(
-	          'div',
-	          { style: this.styles().single },
-	          React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'b', value: this.props.rgb.b, onChange: this.handleChange, dragLabel: 'true', dragMax: '255' }))
-	        ),
-	        React.createElement(
-	          'div',
-	          { style: this.styles().single },
-	          React.createElement(EditableInput, _extends({}, this.styles().Input, { label: 'a', value: Math.round(this.props.rgb.a * 100), onChange: this.handleChange, dragLabel: 'true', dragMax: '100' }))
-	        )
+	        { style: this.styles().fields },
+	        this.fields()
 	      );
 	    }
 	  }]);
