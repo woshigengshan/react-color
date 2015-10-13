@@ -37,8 +37,8 @@ class ShetchFields extends ReactCSS.Component {
         Input: {
           style: {
             input: {
-              width: '80%',
-              padding: '4px 10% 3px',
+              width: '100%',
+              padding: '4px 0 3px',
               border: 'none',
               boxShadow: 'inset 0 0 0 1px #ccc',
               fontSize: '11px',
