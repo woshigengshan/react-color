@@ -16,70 +16,133 @@ export class Sketch extends ReactCSS.Component {
   }
 
   classes(): any {
-    return {
-      'default': {
-        picker: {
-          width: this.props.width,
-          padding: '10px 10px 0',
-          boxSizing: 'initial',
-          background: '#fff',
-          borderRadius: '4px',
-          boxShadow: '0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15)',
-        },
-        saturation: {
-          width: '100%',
-          paddingBottom: '75%',
-          position: 'relative',
-          overflow: 'hidden',
-        },
-        Saturation: {
-          radius: '3px',
-          shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
-        },
-        controls: {
-          display: 'flex',
-        },
-        sliders: {
-          padding: '4px 0',
-          flex: '1',
-        },
-        color: {
-          width: '24px',
-          height: '24px',
-          position: 'relative',
-          marginTop: '4px',
-          marginLeft: '4px',
-          borderRadius: '3px',
-        },
-        activeColor: {
-          Absolute: '0 0 0 0',
-          borderRadius: '2px',
-          background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
-          boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
-          zIndex: '2',
-        },
-        hue: {
-          position: 'relative',
-          height: '10px',
-          overflow: 'hidden',
-        },
-        Hue: {
-          radius: '2px',
-          shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
-        },
+    if (this.props.rgba === 'show') {
+      return {
+        'default': {
+          picker: {
+            width: this.props.width,
+            padding: '10px 10px 0',
+            boxSizing: 'initial',
+            background: '#fff',
+            borderRadius: '4px',
+            boxShadow: '0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15)',
+          },
+          saturation: {
+            width: '100%',
+            paddingBottom: '75%',
+            position: 'relative',
+            overflow: 'hidden',
+          },
+          Saturation: {
+            radius: '3px',
+            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+          },
+          controls: {
+            display: 'flex',
+          },
+          sliders: {
+            padding: '4px 0',
+            flex: '1',
+          },
+          color: {
+            width: '24px',
+            height: '24px',
+            position: 'relative',
+            marginTop: '4px',
+            marginLeft: '4px',
+            borderRadius: '3px',
+          },
+          activeColor: {
+            Absolute: '0 0 0 0',
+            borderRadius: '2px',
+            background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
+            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+            zIndex: '2',
+          },
+          hue: {
+            position: 'relative',
+            height: '10px',
+            overflow: 'hidden',
+          },
+          Hue: {
+            radius: '2px',
+            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+          },
 
-        alpha: {
-          position: 'relative',
-          height: '10px',
-          marginTop: '4px',
-          overflow: 'hidden',
+          alpha: {
+            position: 'relative',
+            height: '10px',
+            marginTop: '4px',
+            overflow: 'hidden',
+          },
+          Alpha: {
+            radius: '2px',
+            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+          },
         },
-        Alpha: {
-          radius: '2px',
-          shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+      };
+    } else {
+      return {
+        'default': {
+          picker: {
+            width: '200px',
+            padding: '10px 10px 0',
+            boxSizing: 'initial',
+            background: '#fff',
+            borderRadius: '4px',
+            boxShadow: '0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15)',
+          },
+          saturation: {
+            width: '100%',
+            paddingBottom: '75%',
+            position: 'relative',
+            overflow: 'hidden',
+          },
+          Saturation: {
+            radius: '3px',
+            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+          },
+          controls: {
+            display: 'flex',
+          },
+          sliders: {
+            padding: '4px 0',
+            flex: '1',
+          },
+          color: {
+            width: '16px',
+            height: '16px',
+            position: 'relative',
+            marginTop: '4px',
+            marginLeft: '4px',
+            borderRadius: '3px',
+          },
+          activeColor: {
+            Absolute: '0 0 0 0',
+            borderRadius: '2px',
+            background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
+            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+            zIndex: '2',
+          },
+          hue: {
+            position: 'relative',
+            height: '16px',
+            overflow: 'hidden',
+          },
+          Hue: {
+            radius: '2px',
+            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+          },
+          alpha: {
+            display: 'none'
+          },
+          Alpha: {
+            radius: '2px',
+            shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
+          },
         },
-      },
-    };
+      };
+    }
   }
 
   handleChange(data: any) {

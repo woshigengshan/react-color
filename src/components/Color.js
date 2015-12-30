@@ -180,6 +180,7 @@ ColorPicker.defaultProps = {
   },
   display: null,
   type: 'sketch',
+  rgba: 'show',
   position: 'right',
   positionCSS: {},
 };

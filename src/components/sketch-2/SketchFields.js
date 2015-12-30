@@ -28,6 +28,12 @@ export class ShetchFields extends ReactCSS.Component {
         double: {
           flex: '2',
         },
+        hexHolder: {
+          width: '100%'
+        },
+        only: {
+          flex: '1'
+        },
         Input: {
           style: {
             input: {
@@ -36,6 +42,7 @@ export class ShetchFields extends ReactCSS.Component {
               border: 'none',
               boxShadow: 'inset 0 0 0 1px #ccc',
               fontSize: '11px',
+              textAlign: 'center'
             },
             label: {
               display: 'block',
@@ -80,8 +87,9 @@ export class ShetchFields extends ReactCSS.Component {
   }
 
   render(): any {
-    return (
-      <div is="fields" className="flexbox-fix">
+    var elem = null;
+    if (this.props.rgba === 'show') {
+      elem = (<div is="fields" className="flexbox-fix">
         <div is="double">
           <EditableInput is="Input" label="hex" value={ this.props.hex.replace('#', '') } onChange={ this.handleChange }/>
         </div>
@@ -97,8 +105,16 @@ export class ShetchFields extends ReactCSS.Component {
         <div is="single">
           <EditableInput is="Input" label="a" value={ Math.round(this.props.rgb.a * 100) } onChange={ this.handleChange } dragLabel="true" dragMax="100"/>
         </div>
-      </div>
-    );
+      </div>);
+    } else {
+      elem = (<div is="fields" className="flexbox-fix">
+        <div is="double">
+          <EditableInput is="Input" label="hex" value={ this.props.hex.replace('#', '') } onChange={ this.handleChange }/>
+        </div>
+      </div>);
+    }
+    console.log('elem-->', elem);
+    return (elem);
   }
 
 }

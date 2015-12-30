@@ -14,44 +14,85 @@ export class Hue extends ReactCSS.Component {
   }
 
   classes(): any {
-    return {
-      'default': {
-        hue: {
-          Absolute: '0 0 0 0',
-          background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
-          borderRadius: this.props.radius,
-          boxShadow: this.props.shadow,
+    if (this.props.rgba === 'show') {
+      return {
+        'default': {
+          hue: {
+            Absolute: '0 0 0 0',
+            background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
+            borderRadius: this.props.radius,
+            boxShadow: this.props.shadow,
+          },
+          container: {
+            margin: '0 2px',
+            position: 'relative',
+            height: '100%',
+          },
+          pointer: {
+            zIndex: '2',
+            position: 'absolute',
+            left: (this.props.hsl.h * 100) / 360 + '%',
+          },
+          slider: {
+            marginTop: '1px',
+            width: '4px',
+            borderRadius: '1px',
+            height: '8px',
+            boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
+            background: '#fff',
+            transform: 'translateX(-2px)',
+          },
         },
-        container: {
-          margin: '0 2px',
-          position: 'relative',
-          height: '100%',
+        'direction-vertical': {
+          hue: {
+            background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
+          },
+          pointer: {
+            left: '0',
+            top: -((this.props.hsl.h * 100) / 360) + 100 + '%',
+          },
         },
-        pointer: {
-          zIndex: '2',
-          position: 'absolute',
-          left: (this.props.hsl.h * 100) / 360 + '%',
+      };
+    } else {
+      return {
+        'default': {
+          hue: {
+            Absolute: '0 0 0 0',
+            background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
+            borderRadius: this.props.radius,
+            boxShadow: this.props.shadow,
+          },
+          container: {
+            margin: '0 2px',
+            position: 'relative',
+            height: '16px',
+          },
+          pointer: {
+            zIndex: '2',
+            position: 'absolute',
+            left: (this.props.hsl.h * 100) / 360 + '%',
+          },
+          slider: {
+            marginTop: '1px',
+            width: '4px',
+            borderRadius: '1px',
+            height: '14px',
+            boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
+            background: '#fff',
+            transform: 'translateX(-2px)',
+          },
         },
-        slider: {
-          marginTop: '1px',
-          width: '4px',
-          borderRadius: '1px',
-          height: '8px',
-          boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
-          background: '#fff',
-          transform: 'translateX(-2px)',
+        'direction-vertical': {
+          hue: {
+            background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
+          },
+          pointer: {
+            left: '0',
+            top: -((this.props.hsl.h * 100) / 360) + 100 + '%',
+          },
         },
-      },
-      'direction-vertical': {
-        hue: {
-          background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
-        },
-        pointer: {
-          left: '0',
-          top: -((this.props.hsl.h * 100) / 360) + 100 + '%',
-        },
-      },
-    };
+      };
+    }
   }
 
   handleChange(e: any, skip: boolean) {
