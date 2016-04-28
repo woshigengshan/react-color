@@ -48,7 +48,7 @@ export class Hue extends ReactCSS.Component {
             background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
           },
           pointer: {
-            left: '0',
+            left: '0px',
             top: -((this.props.hsl.h * 100) / 360) + 100 + '%',
           },
         },
@@ -87,7 +87,7 @@ export class Hue extends ReactCSS.Component {
             background: 'linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
           },
           pointer: {
-            left: '0',
+            left: '0px',
             top: -((this.props.hsl.h * 100) / 360) + 100 + '%',
           },
         },

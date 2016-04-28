@@ -43,7 +43,7 @@ export class PhotoshopPicker extends ReactCSS.Component {
               marginRight: '10px',
             },
             label: {
-              left: '0',
+              left: '0px',
               width: '34px',
               textTransform: 'uppercase',
               fontSize: '13px',
@@ -70,8 +70,8 @@ export class PhotoshopPicker extends ReactCSS.Component {
             },
             label: {
               position: 'absolute',
-              top: '0',
-              left: '0',
+              top: '0px',
+              left: '0px',
               width: '14px',
               textTransform: 'uppercase',
               fontSize: '13px',

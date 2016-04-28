@@ -47,10 +47,10 @@ class ColorPicker extends ReactCSS.Component {
         },
         cover: {
           position: 'fixed',
-          top: '0',
-          bottom: '0',
-          left: '0',
-          right: '0',
+          top: '0px',
+          bottom: '0px',
+          left: '0px',
+          right: '0px',
         },
       },
       'hide': {
@@ -64,20 +64,20 @@ class ColorPicker extends ReactCSS.Component {
         wrap: {
           left: '100%',
           marginLeft: '20px',
-          top: '0',
+          top: '0px',
         },
       },
       'left': {
         wrap: {
           right: '100%',
           marginRight: '20px',
-          top: '0',
+          top: '0px',
         },
       },
       'below': {
         wrap: {
-          left: '0',
-          marginLeft: '0',
+          left: '0px',
+          marginleft: '0px',
           top: '100%',
           marginTop: '20px',
         },
