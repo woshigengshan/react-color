@@ -34591,15 +34591,15 @@
 	      return {
 	        'default': {
 	          alpha: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            borderRadius: this.props.radius
 	          },
 	          checkboard: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            overflow: 'hidden'
 	          },
 	          gradient: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            background: 'linear-gradient(to right, rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', 0) 0%, rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', 1) 100%)',
 	            boxShadow: this.props.shadow,
 	            borderRadius: this.props.radius
@@ -34768,7 +34768,7 @@
 	      return {
 	        'default': {
 	          grid: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            background: 'url(' + background + ') center left'
 	          }
 	        }
@@ -35029,7 +35029,7 @@
 	        return {
 	          'default': {
 	            hue: {
-	              Absolute: '0 0 0 0',
+	              Absolute: '0px 0px 0px 0px',
 	              background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
 	              borderRadius: this.props.radius,
 	              boxShadow: this.props.shadow
@@ -35068,7 +35068,7 @@
 	        return {
 	          'default': {
 	            hue: {
-	              Absolute: '0 0 0 0',
+	              Absolute: '0px 0px 0px 0px',
 	              background: 'linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%)',
 	              borderRadius: this.props.radius,
 	              boxShadow: this.props.shadow
@@ -35242,16 +35242,16 @@
 	      return {
 	        'default': {
 	          color: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            background: 'hsl(' + this.props.hsl.h + ',100%, 50%)',
 	            borderRadius: this.props.radius
 	          },
 	          white: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            background: 'linear-gradient(to right, #fff, rgba(255,255,255,0))'
 	          },
 	          black: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            background: 'linear-gradient(to top, #000, rgba(0,0,0,0))',
 	            boxShadow: this.props.shadow
 	          },
@@ -35800,7 +35800,7 @@
 	              borderRadius: '3px'
 	            },
 	            activeColor: {
-	              Absolute: '0 0 0 0',
+	              Absolute: '0px 0px 0px 0px',
 	              borderRadius: '2px',
 	              background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
 	              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
@@ -35865,7 +35865,7 @@
 	              borderRadius: '3px'
 	            },
 	            activeColor: {
-	              Absolute: '0 0 0 0',
+	              Absolute: '0px 0px 0px 0px',
 	              borderRadius: '2px',
 	              background: 'rgba(' + this.props.rgb.r + ', ' + this.props.rgb.g + ', ' + this.props.rgb.b + ', ' + this.props.rgb.a + ')',
 	              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)',
@@ -36345,7 +36345,7 @@
 	            overflow: 'hidden'
 	          },
 	          active: {
-	            Absolute: '0 0 0 0',
+	            Absolute: '0px 0px 0px 0px',
 	            zIndex: 2,
 	            borderRadius: '8px',
 	            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
